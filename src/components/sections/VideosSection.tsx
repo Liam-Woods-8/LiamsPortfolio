@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { VideoLightbox } from "@/components/lightbox/VideoLightbox";
+import { MediaLightbox } from "@/components/lightbox/MediaLightbox";
 import { SectionTitle } from "@/components/portfolio/SectionTitle";
 import { videos } from "@/data/portfolio";
 
@@ -55,7 +55,10 @@ export function VideosSection() {
                     fill
                     className="object-cover opacity-90 transition group-hover:opacity-100"
                     sizes="(min-width: 1024px) 42rem, 90vw"
-                    unoptimized={video.thumb.startsWith("http")}
+                    unoptimized={
+                      video.thumb.startsWith("http") ||
+                      /\.gif(\?|$)/i.test(video.thumb)
+                    }
                   />
                   <span className="font-neon absolute bottom-2 left-2 rounded-sm bg-stone-950/75 px-2 py-0.5 text-[8px] uppercase tracking-[0.35em] text-red-100">
                     Play
@@ -70,7 +73,8 @@ export function VideosSection() {
         ))}
       </div>
 
-      <VideoLightbox
+      <MediaLightbox
+        variant="video"
         open={!!active}
         title={active?.title ?? ""}
         embedUrl={active?.embedUrl ?? null}

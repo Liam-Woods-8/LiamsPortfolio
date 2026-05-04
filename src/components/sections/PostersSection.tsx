@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { PosterLightbox } from "@/components/lightbox/PosterLightbox";
+import { ImageLightbox } from "@/components/lightbox/ImageLightbox";
 import { SectionTitle } from "@/components/portfolio/SectionTitle";
 import { posters } from "@/data/portfolio";
 
@@ -15,32 +15,36 @@ export function PostersSection() {
     <section id="posters" className="mb-28 scroll-mt-32">
       <SectionTitle id="posters-heading">Posters</SectionTitle>
 
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+      {/* 2×2 grid; total width ~ a single photos row (slightly under main max-w-6xl) */}
+      <div className="mx-auto grid w-full max-w-[52rem] grid-cols-2 gap-4 sm:max-w-5xl sm:gap-6">
         {posters.map((poster, index) => (
           <motion.button
             type="button"
             key={poster.id}
             onClick={() => setActiveId(poster.id)}
-            className="group text-left"
+            className="group w-full text-left"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-8%" }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -4 }}
           >
-            <div className="relative border border-stone-900/30 bg-[#f4eee4] p-2 pb-10 shadow-[6px_8px_0_rgba(12,10,9,0.12)] ring-1 ring-stone-900/10 transition group-hover:shadow-[8px_12px_0_rgba(12,10,9,0.18)]">
-              <div className="relative aspect-[2/3] w-full bg-stone-800/10">
+            <div className="relative border-2 border-black bg-[#f4eee4] p-2 shadow-[6px_8px_0_#000] transition group-hover:shadow-[8px_10px_0_#000] sm:p-2.5">
+              <div className="relative aspect-[2/3] w-full bg-black">
                 <Image
                   src={poster.src}
                   alt={poster.alt}
                   fill
                   className="object-cover"
-                  sizes="(min-width: 768px) 20vw, 45vw"
-                  unoptimized={poster.src.startsWith("http")}
+                  sizes="(min-width: 1024px) 22rem, (min-width: 640px) 36vw, 42vw"
+                  unoptimized={
+                    poster.src.startsWith("http") ||
+                    /\.gif(\?|$)/i.test(poster.src)
+                  }
                 />
               </div>
               {poster.title ? (
-                <p className="font-body absolute bottom-2 left-0 right-0 px-2 text-center text-xs tracking-wide text-stone-700">
+                <p className="font-body border-t-2 border-black bg-black px-2 py-2 text-center text-[10px] uppercase tracking-[0.2em] text-white sm:text-[11px]">
                   {poster.title}
                 </p>
               ) : null}
@@ -49,12 +53,13 @@ export function PostersSection() {
         ))}
       </div>
 
-      <PosterLightbox
+      <ImageLightbox
         open={!!active}
         src={active?.src ?? null}
-        alt={active?.alt ?? ""}
+        alt={active?.alt}
         caption={active?.title}
         onClose={() => setActiveId(null)}
+        presentation="poster"
       />
     </section>
   );

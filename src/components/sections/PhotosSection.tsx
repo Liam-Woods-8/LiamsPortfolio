@@ -50,7 +50,10 @@ export function PhotosSection() {
                     fill
                     className="object-cover"
                     sizes="(min-width: 640px) 22vw, 45vw"
-                    unoptimized={photo.src.startsWith("http")}
+                    unoptimized={
+                      photo.src.startsWith("http") ||
+                      /\.gif(\?|$)/i.test(photo.src)
+                    }
                   />
                   <Image
                     src="/images/photoFrame.png"
@@ -72,7 +75,7 @@ export function PhotosSection() {
       <ImageLightbox
         open={!!active}
         src={active?.src ?? null}
-        alt={active?.alt ?? ""}
+        alt={active?.alt}
         caption={active?.caption}
         onClose={() => setActiveId(null)}
       />

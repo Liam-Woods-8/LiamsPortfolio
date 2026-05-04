@@ -56,7 +56,7 @@ export function HeaderBar() {
         className="font-body flex flex-wrap w-full items-center justify-between gap-y-2 bg-white border-2 border-black px-4 py-3 text-left text-[11px] uppercase tracking-[0.28em] text-stone-800 sm:flex-nowrap sm:px-8 sm:text-xs"
         aria-label="Archive sections"
       >
-        {nav.map((item, index) => (
+        {nav.map((item) => (
           <motion.a
             key={item.href}
             href={item.href}

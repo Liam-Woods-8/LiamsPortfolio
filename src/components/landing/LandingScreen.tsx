@@ -1,19 +1,22 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 
-const LogoCanvas = dynamic(
-  () => import("./LogoCanvas").then((m) => m.LogoCanvas),
-  { ssr: false },
-);
-
 const PAPER_BG = "/images/paper-texture.jpg";
+const LOGO_SRC = "/images/woodsLiam_logo.png";
+
+const paperLayerStyle = {
+  backgroundColor: "#d6cfc4" as const,
+  backgroundImage: `url(${PAPER_BG})`,
+  backgroundSize: "cover" as const,
+  backgroundPosition: "center" as const,
+  backgroundAttachment: "fixed" as const,
+};
 
 /**
- * Full-screen landing: paper texture, centered R3F logo, neon-style “Access Archive”.
- * Logo (3D) and CTA button enter the archive.
+ * Full-screen landing: paper texture, flat logo on matching paper mat, neon-style “Access Archive”.
  */
 export function LandingScreen({ onEnter }: { onEnter: () => void }) {
   return (
@@ -21,19 +24,34 @@ export function LandingScreen({ onEnter }: { onEnter: () => void }) {
       {/* Full-bleed paper + dark vignette frame (archive margins) */}
       <div
         className="pointer-events-none absolute inset-0 bg-[#d6cfc4]"
-        style={{
-          backgroundImage: `url(${PAPER_BG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        style={paperLayerStyle}
         aria-hidden
       />
 
       <div className="relative z-10 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
         <div className="flex w-full flex-col items-center">
-          <div className="h-[min(66vh,640px)] w-full max-w-[760px]">
-            <LogoCanvas onEnter={onEnter} />
-          </div>
+          <button
+            type="button"
+            onClick={onEnter}
+            aria-label="Enter portfolio — logo"
+            className="group w-full max-w-[min(92vw,520px)] cursor-pointer border-0 bg-transparent p-0 transition-transform select-none hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-900/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#d6cfc4]"
+          >
+            <div
+              className="rounded-sm px-10 py-12 shadow-[inset_0_0_0_1px_rgba(28,25,23,0.1),0_14px_48px_rgba(12,10,9,0.14)] sm:px-14 sm:py-14"
+              style={paperLayerStyle}
+            >
+              <div className="relative mx-auto h-[min(38vh,360px)] w-full max-w-[min(100%,340px)] sm:h-[min(42vh,400px)] sm:max-w-[380px]">
+                <Image
+                  src={LOGO_SRC}
+                  alt="Liam Woods"
+                  fill
+                  className="object-contain object-center"
+                  sizes="(max-width: 640px) 92vw, 380px"
+                  priority
+                />
+              </div>
+            </div>
+          </button>
           <button
             type="button"
             onClick={onEnter}

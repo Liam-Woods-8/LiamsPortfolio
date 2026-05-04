@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SectionTitle } from "@/components/portfolio/SectionTitle";
 
 const WAX = "/images/wax-seal.png";
+const LETTER_TEX = "/images/letterTex.jpg";
 
 /** Typed letter / archival document block with wax seal accent. */
 export function AboutSection() {
@@ -15,7 +16,7 @@ export function AboutSection() {
       <motion.article
         className="relative mx-auto w-full max-w-full sm:max-w-xl border border-stone-900/35 p-5 pb-14 shadow-[8px_10px_0_rgba(12,10,9,0.08)] sm:p-6 sm:pb-18"
         style={{
-          backgroundImage: "linear-gradient(rgba(242,235,226,0.95), rgba(242,235,226,0.95)), url('c:\Users\Liam\Downloads\letterTex.jpg')",
+          backgroundImage: `linear-gradient(rgba(242,235,226,0.95), rgba(242,235,226,0.95)), url('${LETTER_TEX}')`,
           backgroundBlendMode: 'multiply',
           backgroundSize: 'cover',
           backgroundRepeat: 'repeat',
@@ -50,11 +51,11 @@ export function AboutSection() {
           </div>
         </div>
 
-        <div className="font-body space-y-4 pb-[15px] text-left text-sm leading-relaxed text-red-700 sm:text-sm">
-          <p className="mb-1 font-body text-lg text-red-700 sm:text-xl">
+        <div className="font-body space-y-4 pb-[15px] text-left text-sm leading-relaxed text-black sm:text-sm">
+          <p className="mb-1 font-body text-lg text-black sm:text-xl">
             Liam Woods
           </p>
-          <p className="font-body text-lg text-red-700 sm:text-xl">
+          <p className="font-body text-lg text-black sm:text-xl">
             Syracuse NY, 13244
           </p>
           <p>

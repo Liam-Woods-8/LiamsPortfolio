@@ -1,6 +1,8 @@
 /**
  * Placeholder content — swap `src` / `embedUrl` / local paths when real assets are ready.
  * Keep the same shape so sections stay drop-in editable.
+ *
+ * Naming: photos IMG_####, videos MP4_####, posters PDF_#### (print-ready poster files).
  */
 
 export type PhotoItem = {
@@ -14,7 +16,7 @@ export type VideoItem = {
   id: string;
   title: string;
   thumb: string;
-  /** YouTube embed URL, Vimeo player URL, or MP4 URL */
+  /** YouTube / Vimeo embed URL, or a direct image/GIF path for in-modal playback */
   embedUrl: string;
 };
 
@@ -27,83 +29,75 @@ export type PosterItem = {
 
 export const photos: PhotoItem[] = [
   {
-    id: "ph-1",
-    src: "https://picsum.photos/seed/woods-photo-1/900/720",
-    alt: "Portfolio photograph 1",
-    caption: "Study I",
+    id: "IMG_0001",
+    src: "/images/snow1.JPG",
+    alt: "IMG_0001",
+    caption: "IMG_0001",
   },
   {
-    id: "ph-2",
-    src: "https://picsum.photos/seed/woods-photo-2/720/900",
-    alt: "Portfolio photograph 2",
-    caption: "Study II",
+    id: "IMG_0002",
+    src: "/images/snow2.JPG",
+    alt: "IMG_0002",
+    caption: "IMG_0002",
   },
   {
-    id: "ph-3",
-    src: "https://picsum.photos/seed/woods-photo-3/840/660",
-    alt: "Portfolio photograph 3",
+    id: "IMG_0003",
+    src: "/images/snow3.JPG",
+    alt: "IMG_0003",
+    caption: "IMG_0003",
   },
   {
-    id: "ph-4",
-    src: "https://picsum.photos/seed/woods-photo-4/780/780",
-    alt: "Portfolio photograph 4",
-    caption: "Archival print",
-  },
-  {
-    id: "ph-5",
-    src: "https://picsum.photos/seed/woods-photo-5/900/600",
-    alt: "Portfolio photograph 5",
-  },
-  {
-    id: "ph-6",
-    src: "https://picsum.photos/seed/woods-photo-6/680/880",
-    alt: "Portfolio photograph 6",
+    id: "IMG_0004",
+    src: "/images/loading.gif",
+    alt: "IMG_0004",
+    caption: "IMG_0004",
   },
 ];
 
 export const videos: VideoItem[] = [
   {
-    id: "vid-1",
-    title: "Reel / motion study",
-    thumb: "https://picsum.photos/seed/woods-vid-1/640/360",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    id: "MP4_0001",
+    title: "MP4_0001",
+    thumb: "/images/loading.gif",
+    embedUrl: "/images/loading.gif",
   },
   {
-    id: "vid-2",
-    title: "Editorial cut",
-    thumb: "https://picsum.photos/seed/woods-vid-2/640/360",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    id: "MP4_0002",
+    title: "MP4_0002",
+    thumb: "/images/loading.gif",
+    embedUrl: "/images/loading.gif",
   },
   {
-    id: "vid-3",
-    title: "Skate club feature",
-    thumb: "https://picsum.photos/seed/woods-vid-3/640/360",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    id: "MP4_0003",
+    title: "MP4_0003",
+    thumb: "/images/loading.gif",
+    embedUrl: "/images/loading.gif",
   },
 ];
 
 export const posters: PosterItem[] = [
   {
-    id: "po-1",
-    src: "https://picsum.photos/seed/woods-poster-1/700/980",
-    alt: "Poster 1",
-    title: "Series A",
+    id: "PDF_0001",
+    src: "/images/PDF_0001.png",
+    alt: "PDF_0001",
+    title: "PDF_0001",
   },
   {
-    id: "po-2",
-    src: "https://picsum.photos/seed/woods-poster-2/700/980",
-    alt: "Poster 2",
-    title: "Series B",
+    id: "PDF_0002",
+    src: "/images/thereAreNoMaps.png",
+    alt: "PDF_0002",
+    title: "PDF_0002",
   },
   {
-    id: "po-3",
-    src: "https://picsum.photos/seed/woods-poster-3/700/980",
-    alt: "Poster 3",
+    id: "PDF_0003",
+    src: "/images/loading.gif",
+    alt: "PDF_0003",
+    title: "PDF_0003",
   },
   {
-    id: "po-4",
-    src: "https://picsum.photos/seed/woods-poster-4/700/980",
-    alt: "Poster 4",
-    title: "Night edition",
+    id: "PDF_0004",
+    src: "/images/loading.gif",
+    alt: "PDF_0004",
+    title: "PDF_0004",
   },
 ];
